@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+    <style>
+        body{
+            background-color: #eee;
+        }
+        .loginBox{
+            font-family:Georgia;
+            width: 50%;
+            padding: 20px;
+            background-color: white;
+            border:0.8px solid #aaa;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        input{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 8px;
+            width: 90%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+        }
+        input:focus{
+            border: 0.5px solid blue;
+            box-shadow: 0px 0px 5px rgb(69,120,230);
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="loginBox">
+            <form action="action.php" method="post">
+                <div>
+                    <label for="user">Usuário:</label>
+                    <input type="text" id="user" name="user" autocomplete="off">
+                </div>
+                <div>
+                    <label for="psswrd">Senha:</label>
+                    <input type="text" id="psswrd" name="psswrd" autocomplete="off">
+                </div>
+                <button a href="#">Entrar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

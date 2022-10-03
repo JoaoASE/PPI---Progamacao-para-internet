@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>Exercicio 4</title>
+</head>
+
+<body>
+    <h1>Escolha sua necessidade e doutor:</h1>
+    <form action="" method="post">
+        <div class="col-sm-6">
+            <label for="especialidade" class="form-label"><strong>Especialidade</strong></label>
+            <select name="especialidade" class="form-select" id="especialidade">
+              <option value="cardiologia">Cardiologia</option>
+              <option value="dermatologia">Dermatologia</option>
+              <option value="oftalmologia">Oftalmologia</option>
+            </select>
+        </div>
+
+        <div class="col-sm-6">
+            <label for="medicos" class="form-label"><strong>Medicos</strong></label>
+            <select name="medicos" class="form-select" id="medicos">
+            </select>
+        </div>
+    </form>
+
+    <script>
+
+        const buscaesp = document.querySelector("#especialidade");
+        buscaesp.addEventListener('change', buscaMedicos);
+        
+        function buscaMedicos(e) {
+            e.preventDefault();
+            const especialidade = document.querySelector("#especialidade");
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "medicos.php?especialidade=" + especialidade.value, true);
+            xhr.send();
+
+            xhr.onload = function() {
+                if (xhr.status != 200) {
+                    console.error("Falha inesperada: " + xhr.responseText);
+                }
+
+
+                var medicos =  JSON.parse(xhr.responseText);
+
+                var campoSelect = document.getElementById("medicos");
+                
+                for (i = campoSelect.length - 1; i >= 0; i--) {
+                    campoSelect.remove(i);
+                }
+
+                for (i=0; i<medicos.length; i++) {
+                
+                    medico = medicos[i];
+            
+                    option = document.createElement("option");
+                    option.text = medico.nome + ' - ' + medico.telefone;
+                    option.value = medico.nome + ' - ' + medico.telefone;
+                    campoSelect.add(option);
+                }   
+
+            }
+            xhr.onerror = function() {
+                console.error("Erro de rede");
+            };
+        }
+
+    </script>
+
+</body>
+
+</html>

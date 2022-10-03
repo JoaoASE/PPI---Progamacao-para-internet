@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+    <style>
+        body{
+            background-image: url("images/background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 0px -800px; 
+        }
+        .loginBox{
+            font-family:Georgia;
+            width: 30%;
+            padding: 40px;
+            background-color: white;
+            border:0.8px solid #aaa;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        input{
+            display: block;
+            margin: 8px 0 15px;
+            padding: 7px;
+            width: 90%;
+            border: 0.5px solid #888;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+        input:focus{
+            border: 0.5px solid blue;
+            box-shadow: 0px 0px 5px rgb(69,120,230);
+            outline: none;
+        }
+        span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="loginBox">
+            <h3>Cadastro de Usuário</h3>
+
+            <form name="formCadastro"  method="post">
+                <div>
+                    <label for="user">Usuário:</label>
+                    <input type="text" id="usuario" name="usuario" autocomplete="off">
+                    <span></span>
+                </div>
+                <div>
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha">
+                    <span></span>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" autocomplete="off">
+                    <span></span>
+                </div>
+                <button>Cadastrar</button>
+            </form>
+        </div>
+    </main>
+    <script>
+
+        window.onload = function(){
+                document.forms.formCadastro.onsubmit = validaForm; //Acesso aos formulários utilizando a propriedade correta. Quando o formulário for submetido, a função "validaForm" será chamada.
+
+        }
+
+        function validaForm (e) { //Função que verifica se todos os campos foram preenchidos
+            let form = e.target;
+            let formValido = true; //Se positivo, o formulário continua com a submissão
+
+
+            const spanUsuario = form.usuario.nextElementSibling; //Acesso aos objetos correspondentes aos spans por meio da identificação e da propriedade "nextElementSibling"
+            const spanSenha = form.senha.nextElementSibling;
+            const spanEmail = form.email.nextElementSibling;
+
+            spanUsuario.textContent = ""; //Atribuindo pré-valor ao span
+            spanSenha.textContent = "";
+            spanEmail.textContent = "";
+
+            if (form.usuario.value === "") { //Caso qualquer um dos campos, inclusive usuário não for preenchido, a função retorna falso, impedindo a submissão do formulário.
+                spanUsuario.textContent = 'O usuário deve ser preenchido';
+                formValido = false;
+            }
+            if (form.senha.value === "") {
+                spanSenha.textContent = 'A senha deve ser preenchido';
+                formValido = false;
+            }
+            if (form.email.value === "") {
+                spanEmail.textContent = 'O email deve ser preenchido';
+                formValido = false;
+            }
+
+            return formValido; //Caso contrário, prossiga a submissão
+        }
+    </script>
+</body>
+</html>

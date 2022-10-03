@@ -1,0 +1,71 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background:#B5C0FC;
+}
+.top-header{
+    background-color: #001064;
+    position: fixed;
+    top: -20px;
+    right: 8px;
+    width: 100%;
+    height: 70px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#menu{
+    position: relative;
+    padding: 25px;
+    list-style: none;
+    display: flex;
+    left: 20px;
+}
+
+.li-inicial{
+    position: relative;
+    color:white;
+    margin-right: 25px;
+    top: -20px;
+}
+.li-galeria{
+    color:white;
+    margin-right: 20px;
+    font-size: 25px;
+}
+.li-contato{
+    color:white;
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.img1{
+    border: 2px solid rgb(223, 219, 219);
+    border-radius: 15px;
+}
+.img2{
+    border: 2px solid rgb(223, 219, 219);
+    border-radius: 15px;
+}
+.img3{
+    border: 2px solid rgb(223, 219, 219);
+    border-radius: 15px;
+}
+.img4{
+    border: 2px solid rgb(223, 219, 219);
+    border-radius: 15px;
+}
+.img5{
+    border: 2px solid rgb(223, 219, 219);
+    border-radius: 15px;
+}
+.img6{
+    border: 2px solid rgb(223, 219, 219);
+    border-radius: 15px;
+}
+
+.fila2{
+    position: relative;
+    top: 30px;
+}

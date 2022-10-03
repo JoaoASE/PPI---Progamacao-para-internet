@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+    <style>
+
+        main{
+            width: 25%;
+            padding: 5px 10px 5px 80px;
+            background-color: rgb(245, 241, 241);
+            border:0.8px solid #aaa;
+            border-radius: 6px;
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+        }
+        li{
+            width: 230px;
+            padding: 5px 10px 5px 20px;
+            margin: 3px;
+            background-color: rgb(189, 217, 240);
+            border: 0.5px solid rgb(70, 67, 212);
+            border-radius: 4px;
+        }
+        li > button {
+            font-size: smaller;
+            float: right;
+            color: red;
+            border: none;
+            background-color: rgb(189, 217, 240);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ <main>   
+<div>
+    <label for="interesse">Interesse:</label>
+    <input type="text" id="interesse" name="interesse">
+    <span></span>
+</div>
+
+<ol>
+</ol>
+
+</main>
+<script>
+
+    window.onload = function () {  //Criando um evento ao carregar a página
+        const campoInteresse = document.querySelector("#interesse"); //Declarando uma variável selecionando o input pelo seu Id
+        campoInteresse.addEventListener("keyup" , e =>{ //função anônima para tratar o evento "keyup".  "e" é o objeto correspondente ao evento
+            if (e.key === "Enter") //Se a tecla pressionado foi "Enter"
+            adicionaInteresse(); // Função executada
+        });
+    }
+
+    function adicionaInteresse() { //Chamando a função
+        const campoInteresse = document.querySelector("#interesse"); //Declarando uma variável selecionando o input pelo seu Id
+        const listaInteresses = document.querySelector("ol"); //Declarando uma variável selecionando uma lista ordenada vazia
+
+        const novoLi = document.createElement("li"); //Criação de um nó na estrutura do tipo elemento de lista
+        const novoSpan = document.createElement("span"); //Criação de um nó na estrutura do tipo elemento de span
+        const novoBotao = document.createElement("button"); //Criação de um nó na estrutura do tipo elemento de botão
+        
+        novoSpan.textContent = campoInteresse.value; //Acesso ao conteúdo campoInteresse
+        novoBotao.textContent = ' X '; //Adicionando conteúdo ao botão - X
+        
+        novoLi.appendChild(novoSpan); //Adicionando o novo nó como filho da lista novoLi
+        novoLi.appendChild(novoBotao); //Adicionando o novo nó como filho da lista novoLi
+        listaInteresses.appendChild(novoLi); //Adicionando o novo nó como filho da minha listaInteresses
+
+        novoBotao.onclick = function () { // Associando uma função anônima ao evento clique do botão
+            listaInteresses.removeChild(novoLi); //Acesso ao elemento pai de Li, pedindo que seja removido o objeto novoLi
+        }
+        
+        
+        campoInteresse.value = ''; //Reportando valor vazio ao conteúdo, assim nada ocorrerá
+    }
+</script>
+
+</body>
+</html>
